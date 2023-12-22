@@ -1,6 +1,6 @@
+import 'package:base_project/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/theming/text_styles.dart';
 
 
 class AlreadyHaveAccountText extends StatelessWidget {
