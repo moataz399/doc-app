@@ -1,4 +1,6 @@
 import 'package:base_project/core/network/api_costants.dart';
+import 'package:base_project/features/register/data/models/register_request_body.dart';
+import 'package:base_project/features/register/data/models/register_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
@@ -13,4 +15,8 @@ abstract class ApiService {
 
   @POST(ApiConstants.login)
   Future<LoginResponse> login(@Body() LoginRequestBody loginRequestBody);
+
+  @POST(ApiConstants.register)
+  Future<RegisterResponse> register(
+      @Body() RegisterRequestBody registerRequestBody);
 }

@@ -22,9 +22,9 @@ class UserData {
 
   String? token;
   @JsonKey(name:'username')
-  String UserName;
+  String userName;
 
-  UserData(this.token, this.UserName);
+  UserData(this.token, this.userName);
 
   factory UserData.fromJson(Map<String, dynamic>json)=> _$UserDataFromJson(json);
 
