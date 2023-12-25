@@ -1,6 +1,5 @@
-import 'package:base_project/core/helpers/app_regex.dart';
+import 'package:base_project/core/helpers/extensions.dart';
 import 'package:base_project/core/widgets/app_text_button.dart';
-import 'package:base_project/core/widgets/app_text_form_field.dart';
 import 'package:base_project/features/logIn/ui/widgets/terms_and_conditions_text.dart';
 import 'package:base_project/features/register/logic/register_cubit.dart';
 import 'package:base_project/features/register/ui/widgets/already_have_an%20account_register.dart';
@@ -8,8 +7,11 @@ import 'package:base_project/features/register/ui/widgets/register_bloc_Listener
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/helpers/app_regex.dart';
 import '../../../core/helpers/spacing.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/theming/text_styles.dart';
+import '../../../core/widgets/app_text_form_field.dart';
 import '../../logIn/ui/widgets/password_validations.dart';
 import '../data/models/register_request_body.dart';
 
@@ -21,8 +23,20 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  bool isObscureText = true;
+  TextEditingController emailController = TextEditingController();
+
   late TextEditingController passwordController;
+
+  TextEditingController nameController = TextEditingController();
+
+  TextEditingController phoneNumberController = TextEditingController();
+
+  TextEditingController passwordConfirmationController =
+      TextEditingController();
+
+  final registerFormKey = GlobalKey<FormState>();
+
+  bool isObscureText = true;
 
   bool hasLowercase = false;
   bool hasUppercase = false;
@@ -33,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   void initState() {
     super.initState();
-    passwordController = context.read<RegisterCubit>().passwordController;
+    passwordController = TextEditingController();
     setupPasswordControllerListener();
   }
 
@@ -69,14 +83,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   'Sign up now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!',
                   style: TextStyles.font14GrayRegular,
                 ),
-                verticalSpace(36),
+                verticalSpace(28),
                 Form(
-                  key: context.read<RegisterCubit>().formKey,
+                  key: registerFormKey,
                   child: Column(
                     children: [
                       AppTextFormField(
                         hintText: 'name',
-                        controller: context.read<RegisterCubit>().nameController,
+                        controller: nameController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "please enter a valid name";
@@ -85,8 +99,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       verticalSpace(18),
                       AppTextFormField(
-                        controller: context.read<RegisterCubit>().phoneNumberController,
-
+                        controller: phoneNumberController,
                         hintText: 'phone number',
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -97,8 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       verticalSpace(18),
                       AppTextFormField(
                         hintText: 'Email',
-                        controller: context.read<RegisterCubit>().emailController,
-
+                        controller: emailController,
                         validator: (value) {
                           if (value == null ||
                               value.isEmpty ||
@@ -134,9 +146,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       verticalSpace(18),
                       AppTextFormField(
-                        controller: context
-                            .read<RegisterCubit>()
-                            .passwordConfirmationController,
+                        controller: passwordConfirmationController,
                         hintText: 'password Confirmation',
                         isObscureText: isObscureText,
                         suffixIcon: GestureDetector(
@@ -159,10 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           }
 
                           if (passwordController.text !=
-                              context
-                                  .read<RegisterCubit>()
-                                  .passwordConfirmationController
-                                  .text) {
+                              passwordConfirmationController.text) {
                             return "passwords don\'t match";
                           }
                         },
@@ -175,7 +182,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hasSpecialCharacters: hasSpecialCharacters,
                         hasNumber: hasNumber,
                       ),
-                      verticalSpace(36),
+                      verticalSpace(16),
+                      verticalSpace(18),
                       AppTextButton(
                           buttonText: 'create account ',
                           textStyle: TextStyles.font16WhiteSemiBold,
@@ -185,7 +193,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       verticalSpace(24),
                       const TermsAndConditionsText(),
                       verticalSpace(18),
-                      const AlreadyHaveAccountTextRegister(),
+                      AlreadyHaveAccountTextRegister(function: () {
+                        context.pushReplacementNamed(Routes.loginScreen);
+                      }),
                       const RegisterBlocListener(),
                       verticalSpace(24),
                     ],
@@ -200,18 +210,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   void validateThenDoRegister(BuildContext context) {
-    if (context.read<RegisterCubit>().formKey.currentState!.validate()) {
+    if (registerFormKey.currentState!.validate()) {
       context.read<RegisterCubit>().emitRegisterStates(
             RegisterRequestBody(
-              email: context.read<RegisterCubit>().emailController.text,
-              password: context.read<RegisterCubit>().passwordController.text,
-              name: context.read<RegisterCubit>().nameController.text,
-              phone: context.read<RegisterCubit>().phoneNumberController.text,
+              email: emailController.text,
+              password: passwordController.text,
+              name: nameController.text,
+              phone: phoneNumberController.text,
               gender: '0',
-              passwordConfirmation: context
-                  .read<RegisterCubit>()
-                  .passwordConfirmationController
-                  .text,
+              passwordConfirmation: passwordConfirmationController.text,
             ),
           );
     }

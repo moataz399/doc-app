@@ -33,7 +33,7 @@ class RegisterBlocListener extends StatelessWidget {
           },
           success: (loginResponse) {
             context.pop();
-            context.pushNamed(Routes.homeScreen);
+            context.pushReplacementNamed(Routes.homeScreen);
           },
           error: (error) {
             context.pop();

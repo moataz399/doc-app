@@ -30,18 +30,18 @@ class AppRouter {
 
       case Routes.loginScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => getIt<LoginCubit>(),
+            builder: (_) => BlocProvider.value(
+                  value: getIt<LoginCubit>(),
                   child: const LoginScreen(),
                 ));
 
-
       case Routes.registerScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-              create: (context) => getIt<RegisterCubit>(),
+            builder: (_) => BlocProvider.value(
+              value: getIt<RegisterCubit>(),
               child: const RegisterScreen(),
             ));
+
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
