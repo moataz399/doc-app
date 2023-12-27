@@ -1,5 +1,8 @@
 import 'package:base_project/core/di/dependency_injection.dart';
+import 'package:base_project/features/home/logic/home_cubit.dart';
 import 'package:base_project/features/home/ui/home_screen.dart';
+import 'package:base_project/features/home/ui/screens/doctor_recommendation_screen.dart';
+import 'package:base_project/features/home/ui/screens/doctor_speciality_screen.dart';
 import 'package:base_project/features/logIn/logic/login_cubit.dart';
 import 'package:base_project/features/logIn/ui/login_screen.dart';
 import 'package:base_project/features/register/logic/register_cubit.dart';
@@ -23,9 +26,24 @@ class AppRouter {
           builder: (_) => const OnboardingScreen(),
         );
 
+      case Routes.doctorRecommendationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const DoctorRecommendationScreen(),
+        );
+
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+            child: const HomeScreen(),
+          ),
+        );
+
+      case Routes.doctorSpecialityScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+              create: (context) => getIt<HomeCubit>(),
+              child: const DoctorSpecialityScreen()),
         );
 
       case Routes.loginScreen:
@@ -38,9 +56,9 @@ class AppRouter {
       case Routes.registerScreen:
         return MaterialPageRoute(
             builder: (_) => BlocProvider.value(
-              value: getIt<RegisterCubit>(),
-              child: const RegisterScreen(),
-            ));
+                  value: getIt<RegisterCubit>(),
+                  child: const RegisterScreen(),
+                ));
 
       default:
         return MaterialPageRoute(

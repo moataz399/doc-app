@@ -11,7 +11,7 @@ class RecommendationDoctorsSection extends StatelessWidget {
     return ListView.builder(
         itemCount: 6,
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(top: 16),
@@ -60,8 +60,11 @@ class RecommendationDoctorsSection extends StatelessWidget {
                         ),
                         horizontalSpace(8),
                         SizedBox(
-                          height: 24,
-                          child: Text('RSUD Gatot  antoni blitz ',
+                          width: 150,
+                          child: Text(
+                              'RSUD Gatot  antoni blitz sd asd as dasd as das ',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyles.font12GreyMedium),
                         ),
                       ],
