@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class ExpandableText extends StatefulWidget {
-  const ExpandableText({Key? key, required this.text}) : super(key: key);
+  const ExpandableText({super.key, required this.text});
   final String text;
 
   @override
@@ -51,7 +51,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                     size: 16,
                     color: AppColors.darkBlue,
                     text: hiddenText
-                        ? firstHalf + '...'
+                        ? '$firstHalf...'
                         : (firstHalf + secondHalf),
                   ),
                   SizedBox(

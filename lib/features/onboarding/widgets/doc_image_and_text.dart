@@ -19,7 +19,7 @@ class DocImageAndText extends StatelessWidget {
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-              stops: [0.014, 0.4],
+              stops: const [0.014, 0.4],
             ),
           ),
           child: Image.asset('assets/images/onBoarding_doctor.png'),

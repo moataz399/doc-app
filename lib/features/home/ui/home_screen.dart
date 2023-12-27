@@ -3,6 +3,7 @@ import 'package:base_project/core/theming/text_styles.dart';
 import 'package:base_project/features/home/ui/widgets/custom_app_bar_home_screen.dart';
 import 'package:base_project/features/home/ui/widgets/dctor_speciality.dart';
 import 'package:base_project/features/home/ui/widgets/header_section_home_screen.dart';
+import 'package:base_project/features/home/ui/widgets/recomendation_doctor_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,18 +65,20 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     Container(
-                        padding: EdgeInsets.zero,
-                        margin: EdgeInsets.zero,
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            'See All',
-                            style: TextStyles.font12BlueRegular,
-                          ),
-                        ))
+                      padding: EdgeInsets.zero,
+                      margin: EdgeInsets.zero,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'See All',
+                          style: TextStyles.font12BlueRegular,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
+              const RecommendationDoctorsSection(),
             ],
           ),
         ),

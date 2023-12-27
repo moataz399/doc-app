@@ -170,7 +170,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                           if (passwordController.text !=
                               passwordConfirmationController.text) {
-                            return "passwords don\'t match";
+                            return "passwords don't match";
                           }
                         },
                       ),

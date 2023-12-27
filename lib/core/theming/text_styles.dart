@@ -23,13 +23,20 @@ class TextStyles {
     color: Colors.blue,
   );
 
+  static TextStyle font12GreyMedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.grey,
+  );
+
   static TextStyle font18BlackBold = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.bold,
     color: Colors.black,
-  );static TextStyle font18BlackSemiBold = TextStyle(
+  );
+  static TextStyle font18BlackSemiBold = TextStyle(
     fontSize: 18.sp,
-    fontWeight: FontWeightHelper.semiBold,
+    fontWeight: FontWeightHelper.medium,
     color: Colors.black,
   );
   static TextStyle font32BlueBold = TextStyle(
@@ -92,6 +99,16 @@ class TextStyles {
     color: Colors.white,
   );
 
+  static TextStyle font16BlackBoldBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+  );
+  static TextStyle font16BlackBoldSemiBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.black,
+  );
   static TextStyle font24BlueBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
