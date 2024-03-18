@@ -14,7 +14,7 @@ class RecommendationDoctorsSection extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: EdgeInsets.only(top: 16.h),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -29,14 +29,11 @@ class RecommendationDoctorsSection extends StatelessWidget {
                     child: Image.asset('assets/images/doctor.png')),
                 horizontalSpace(12),
                 Column(
+                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: 201,
-                      height: 24,
-                      child: Text('Dr. Randy Wigham',
-                          style: TextStyles.font16BlackBoldSemiBold),
-                    ),
+                    Text('Dr. Randy Wigham',
+                        style: TextStyles.font16BlackBoldSemiBold),
                     verticalSpace(8),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,9 +57,9 @@ class RecommendationDoctorsSection extends StatelessWidget {
                         ),
                         horizontalSpace(8),
                         SizedBox(
-                          width: 150,
+                          width: 150.w,
                           child: Text(
-                              'RSUD Gatot  antoni blitz sd asd as dasd as das ',
+                              'RSUD Gatotas da sd asd asd asd asdas dnsa lkjdhlaskdhn  ',
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyles.font12GreyMedium),
@@ -96,7 +93,7 @@ class RecommendationDoctorsSection extends StatelessWidget {
                       ],
                     ),
                   ],
-                )
+                ),
               ],
             ),
           );

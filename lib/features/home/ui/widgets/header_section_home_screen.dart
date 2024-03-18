@@ -16,7 +16,7 @@ class HeaderSectionHomeScreen extends StatelessWidget {
       child: Stack(
         children: [
           PositionedDirectional(
-            bottom: 4,
+            bottom: 1,
             child: Container(
               width: 343.w,
               height: 168.h,

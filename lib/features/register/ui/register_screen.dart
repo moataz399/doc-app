@@ -182,7 +182,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hasSpecialCharacters: hasSpecialCharacters,
                         hasNumber: hasNumber,
                       ),
-                      verticalSpace(16),
                       verticalSpace(18),
                       AppTextButton(
                           buttonText: 'create account ',

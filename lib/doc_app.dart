@@ -1,8 +1,9 @@
 import 'package:base_project/core/routing/routes.dart';
 import 'package:base_project/core/theming/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'core/helpers/internet_cubit.dart';
 import 'core/routing/app_router.dart';
 
 class DocApp extends StatelessWidget {
@@ -24,7 +25,8 @@ class DocApp extends StatelessWidget {
               scaffoldBackgroundColor: Colors.white),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRouter.generateRoute,
-          initialRoute: Routes.doctorDetailsScreen,
+          initialRoute: Routes.homeScreen
+          ,
         ));
   }
 }
