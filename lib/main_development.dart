@@ -11,7 +11,7 @@ void main()async {
   setUpGetIt();
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-
+//
   Bloc.observer = MyBlocObserver();
   runApp(DocApp(appRouter: AppRouter()));
 }
